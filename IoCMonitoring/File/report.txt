@@ -1,0 +1,5 @@
+[!] WARNING: IP Banned 10.0.0.2 Type: reverse shell
+[!] WARNING: IP Banned 52.14.233.90 Type: backdoor
+[!] WARNING: IP Banned 10.10.0.10 Type: backdoor
+[!] WARNING: IP Banned 10.10.0.11 Type: ransomware
+[!] WARNING: IP Banned 10.10.0.12 Type: ddos

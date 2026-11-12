@@ -1,0 +1,5 @@
+10.10.0.10,backdoor
+10.10.0.11,ransomware
+10.10.0.12,ddos
+10.0.0.2,reverse shell
+52.14.233.90,backdoor

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IoC Monitoring Dashboard</title>
+
+<style>
+body {
+    background: #f4f6f8;
+    color: #1f2937;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* HEADER */
+header {
+    background: #111827;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* CONTAINER */
+#output {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    white-space: pre-wrap;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+/* WARNING STYLE */
+.warning {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+/* subtle highlight safe */
+.safe {
+    color: #16a34a;
+}
+
+/* FOOTER INFO */
+footer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #6b7280;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>IoC Monitoring Dashboard</h1>
+</header>
+
+<div id="output">Loading report...</div>
+
+<footer>
+    Auto-refresh every 5 seconds
+</footer>
+
+<script>
+function loadReport() {
+    fetch("report.txt")
+        .then(r => r.text())
+        .then(data => {
+
+            let formatted = data
+                .replaceAll("[!]", '<span class="warning">[!]</span>')
+                .replaceAll("WARNING", '<span class="warning">WARNING</span>');
+
+            document.getElementById("output").innerHTML = formatted;
+        })
+        .catch(() => {
+            document.getElementById("output").innerHTML = "Error loading report.txt";
+        });
+}
+
+loadReport();
+setInterval(loadReport, 5000);
+</script>
+
+</body>
+</html>
